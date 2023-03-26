@@ -5,22 +5,22 @@ services:
       context: .
       dockerfile: Dockerfile
     image: backend:starter
-    container_name: medusa-server-default
-    depends_on:
-      - postgres
-      - redis
+    container_name: medusa-backend
+    # depends_on:
+    #   - postgres
+    #   - redis
     environment:
-      DATABASE_URL: postgres://postgres:postgres@postgres:5432/medusa-docker
-      REDIS_URL: redis://redis
-      NODE_ENV: development
+      DATABASE_URL: postgres://novapo:novapo@192.168.1.7:3600/novapo-medusa
+      REDIS_URL: redis://192.168.1.7:3700
       JWT_SECRET: something
       COOKIE_SECRET: something
       PORT: 9000
+      NODE_ENV: production
     ports:
       - "9000:9000"
-    volumes:
-      - .:/app/medusa
-      - node_modules:/app/medusa/node_modules
+    # volumes:
+    #   - .:/app/medusa
+    #   - node_modules:/app/medusa/node_modules
 
   postgres:
     image: postgres:10.4
