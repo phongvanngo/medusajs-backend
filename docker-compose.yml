@@ -1,40 +1,15 @@
 version: "3.8"
 services:
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: backend:starter
-    container_name: medusa-backend
-    # depends_on:
-    #   - postgres
-    #   - redis
+    image: phongvanngo/medusajs-backend
+    container_name: matkinh53-test-v1
     environment:
-      DATABASE_URL: postgres://novapo:novapo@192.168.1.7:3600/novapo-medusa
-      REDIS_URL: redis://192.168.1.7:3700
+      DATABASE_URL: postgres://novapo:novapo@45.119.85.106:3600/matkinh53-test-v2
+      REDIS_URL: redis://45.119.85.106:3700
       JWT_SECRET: something
       COOKIE_SECRET: something
       PORT: 9000
       NODE_ENV: production
     ports:
       - "9000:9000"
-    # volumes:
-    #   - .:/app/medusa
-    #   - node_modules:/app/medusa/node_modules
-
-  postgres:
-    image: postgres:10.4
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: medusa-docker
-
-  redis:
-    image: redis
-    ports:
-      - "6379:6379"
-
-volumes:
-  node_modules:
+    
